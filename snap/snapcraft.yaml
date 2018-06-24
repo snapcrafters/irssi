@@ -1,7 +1,7 @@
 name: irssi
 version: stable
 version-script: git -C parts/irssi/build describe --tags
-summary: The client of the future 
+summary: The IRC client of the future 
 description: |
   Irssi is a modular chat client that is most commonly known for its text mode 
   user interface, but 80% of the code isn't text mode specific. Irssi comes 
