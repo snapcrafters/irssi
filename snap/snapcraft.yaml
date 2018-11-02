@@ -15,8 +15,8 @@ apps:
   irssi:
     environment:
         LC_ALL: "C.UTF-8"
-        PERL5LIB:  "$SNAP/usr/lib/x86_64-linux-gnu/perl-base/:$SNAP/usr/lib/x86_64-linux-gnu/perl5/5.22/:$SNAP/usr/share/perl5/:$SNAP/usr/share/perl/5.22.1/:$SNAP/usr/lib/x86_64-linux-gnu/perl/5.22/:$SNAP/usr/lib/x86_64-linux-gnu/perl/5.22.1/"
-        LD_LIBRARY_PATH: "$SNAP/usr/lib/x86_64-linux-gnu/pulseaudio/:$LD_LIBRARY_PATH"
+        PERL5LIB:  "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl-base/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl5/5.22/:$SNAP/usr/share/perl5/:$SNAP/usr/share/perl/5.22.1/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl/5.22/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl/5.22.1/"
+        LD_LIBRARY_PATH: "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio/:$LD_LIBRARY_PATH"
         HOME: "$SNAP_USER_COMMON"
     command: irssi
     plugs:
