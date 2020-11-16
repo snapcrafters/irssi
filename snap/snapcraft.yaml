@@ -1,13 +1,12 @@
 name: irssi
-version: stable
-version-script: git -C parts/irssi/build describe --tags
+adopt-info: irssi
 summary: The IRC client of the future 
 description: |
   Irssi is a modular chat client that is most commonly known for its text mode 
   user interface, but 80% of the code isn't text mode specific. Irssi comes 
   with IRC support built in, and there are third party ICB, SILC, XMPP 
   (Jabber), PSYC and Quassel protocol modules available.
-
+base: core18
 grade: stable
 confinement: strict
 
@@ -15,7 +14,7 @@ apps:
   irssi:
     environment:
         LC_ALL: "C.UTF-8"
-        PERL5LIB:  "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl-base/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl5/5.22/:$SNAP/usr/share/perl5/:$SNAP/usr/share/perl/5.22.1/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl/5.22/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl/5.22.1/"
+        PERL5LIB:  "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl-base/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl5/5.26/:$SNAP/usr/share/perl5/:$SNAP/usr/share/perl/5.26.1/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl/5.26/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl/5.26.1/"
         LD_LIBRARY_PATH: "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio/:$LD_LIBRARY_PATH"
         HOME: "$SNAP_USER_COMMON"
     command: irssi
@@ -39,7 +38,7 @@ parts:
       - openssl
     stage-packages:
       - perl-base
-      - libperl5.22
+      - libperl5.26
       - libdatetime-perl
       - libwww-perl
     override-build: |
@@ -51,4 +50,5 @@ parts:
         git fetch
         git checkout "${last_committed_tag}"
       fi
+      snapcraftctl set-version $(git describe --tags)
       snapcraftctl build
