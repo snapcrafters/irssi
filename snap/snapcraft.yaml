@@ -51,4 +51,12 @@ parts:
         git checkout "${last_committed_tag}"
       fi
       snapcraftctl set-version $(git describe --tags)
+      # Work around https://github.com/irssi/irssi/issues/1374
+      git apply $SNAPCRAFT_STAGE/irssi-1.4.1-botti-perl-link-fix.patch
       snapcraftctl build
+    after: [patches]
+  patches:
+    source: patches
+    plugin: dump
+    prime:
+      - -*
